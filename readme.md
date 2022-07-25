@@ -1,4 +1,4 @@
-# Skoob API (WIP)
+# Skoob API (WIP 🛠️)
 
 Esta API foi criada para ajudar a desenvolver aplicações que utilizam informações do [Skoob](https://skoob.com.br).
 
