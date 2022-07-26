@@ -1,6 +1,6 @@
 type Review = {
-  book_id: number;
-  author_id: number;
+  book_id: string;
+  author_id: string;
   author: string;
   title: string | null;
   date: string;

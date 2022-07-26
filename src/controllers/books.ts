@@ -1,6 +1,6 @@
 import fetch from "../lib/fetch";
 import { getBookISBN, getAmazonUrl, getBookPrice } from "../utils/amazon";
-import { Book, SearchResult, SkoobResponse } from "../@types";
+import { Book, SearchResult, SkoobResponse, SkoobBook } from "../@types";
 
 // Retorna lista de livros que contém o termo passado como parâmetro
 async function getBooksByTitle(title: string, limit: number | undefined): Promise<Array<Book>> {
@@ -10,7 +10,7 @@ async function getBooksByTitle(title: string, limit: number | undefined): Promis
 
 // Retorna detalhes do livro com id passado como parâmetro
 async function getBookById(id: string): Promise<Book> {
-  const { response } = await fetch<SkoobResponse>(`/v1/book/${id}`);
+  const { response } = await fetch<SkoobResponse<SkoobBook>>(`/v1/book/${id}`);
   const book = await formatBook(response);
   return book;
 }
