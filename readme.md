@@ -30,10 +30,12 @@ A API utiliza uma mistura de informações da API do Skoob e web scraping no sit
 - [x] Rota de livros
 - [x] Rota de busca
 - [x] Web scraping Amazon
-- [X] Rota de usuários
-- [X] Rota de resenhas
+- [x] Rota de usuários
 - [ ] Implementar MongoDB
   - Já funcionando na rota de usuários
+- [ ] Rota de resenhas
+  - [x] Listar todas as resenhas de um usuário
+  - [ ] Listar todas as resenhas de um livro
 
 ## Bugs conhecidos
 
