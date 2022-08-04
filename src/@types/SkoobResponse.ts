@@ -24,7 +24,7 @@ type SkoobBook = {
   capa_micro: string;
   capa_nano: string;
   img_url: string;
-  url: "string";
+  url: string;
   tempo_leitura: {
     horas: number;
     minutos: number;
