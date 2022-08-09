@@ -10,13 +10,15 @@ A API utiliza uma mistura de informações da API do Skoob e web scraping no sit
 
 ## Rotas da API
 
-| Rota                                   | Descrição                                                                                 | Tipo de retorno  |
-| :------------------------------------- | :---------------------------------------------------------------------------------------- | :--------------- |
-| `/reviews/user/${userId}`              | Retorna todas as resenhas de um usuário                                                   | `Array<Review>`  |
-| `/reviews/book/${bookId}`              | Retorna todas as resenhas de um livro                                                     | `Array<Reviews>` |
-| `/book/${bookId}?tag=${amazonTag}`     | Retorna os dados de um livro,                                                             | `Book`           |
-| `/user/${userId}`                      | Retorna os dados de um usuário                                                            | `User`           |
-| `/search/book/${query}?limit=${limit}` | Retorna `${limit}` livros que contenham o termo `${query}`. O limite padrão é de 3 livros | `Array<Book>`    |
+| Rota                                      | Descrição                                                                                                            | Tipo de retorno  |
+| :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------- | :--------------- |
+| `/reviews/user/${userId}`                 | Retorna todas as resenhas de um usuário                                                                              | `Array<Review>`  |
+| `/reviews/book/${bookId}`                 | Retorna todas as resenhas de um livro                                                                                | `Array<Reviews>` |
+| `/book/${bookId}`                         | Retorna os dados de um livro,                                                                                        | `Book`           |
+| `/book/${bookId}/price?tag=${amazon_tag}` | Retorna preço e link da Amazon de um livro. `${amazon_tag}` Pode ser usada para adicionar link de afiliado da amazon | `Price`          |
+| `/user/${userId}`                         | Retorna os dados de um usuário                                                                                       | `User`           |
+| `/user/${userId}/bookshelf`               | Retorna estante de livros de um usuário                                                                              | `Bookshelf`      |
+| `/search/book/${query}?limit=${limit}`    | Retorna `${limit}` livros que contenham o termo `${query}`. O limite padrão é de 3 livros                            | `Array<Book>`    |
 
 ## Variáveis de ambiente
 
@@ -31,8 +33,7 @@ A API utiliza uma mistura de informações da API do Skoob e web scraping no sit
 - [x] Rota de busca
 - [x] Web scraping Amazon
 - [x] Rota de usuários
-- [ ] Implementar MongoDB
-  - Já funcionando na rota de usuários
+- [x] Implementar MongoDB
 - [ ] Rota de resenhas
   - [x] Listar todas as resenhas de um usuário
   - [ ] Listar todas as resenhas de um livro

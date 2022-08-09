@@ -1,23 +1,23 @@
 import * as cheerio from "cheerio";
 import axios from "axios";
 
-const getBookPrice = async (amazonURL: string): Promise<number | null> => {
-  console.log("Fetching price of", amazonURL);
+/** Recebe url da amazon de um livro e retorna seu preço. Pode retornar null caso não encontre */
+const getBookPrice = async (amazonURL: string | null): Promise<number | null> => {
+  if (!amazonURL) return null;
   try {
     const page = await axios.get(amazonURL, { responseEncoding: "binary" });
     const $ = cheerio.load(page.data.toString("ISO-8859-1"));
     const price = $("span#price").text().split("Â")[1].trim().replace(",", ".");
-    console.log(price);
+
     return parseFloat(price);
   } catch (err) {
-    // Caso não seja possível obter o preço, retorna null. O usuário ainda terá a URL da Amazon.
     console.log("Couldn't fetch price of", amazonURL);
     return null;
   }
 };
 
-const getBookISBN = async (skoobURL: string) => {
-  console.log("Fetching isbn of", skoobURL);
+/** Recebe url do skoob e retorna array com ISBN 10 e 13 ou null  */
+const getBookISBN = async (skoobURL: string): Promise<string[] | null> => {
   const page = await axios.get(`https://skoob.com.br${skoobURL}`, { responseEncoding: "binary" });
   const $ = cheerio.load(page.data.toString("ISO-8859-1"));
   let isbn: string[] = [];
@@ -32,13 +32,13 @@ const getBookISBN = async (skoobURL: string) => {
   if (isbn.length >= 3) {
     isbn.pop();
   }
-  console.log(`URL ${skoobURL}, ISBN: ${isbn}`);
   return isbn.length >= 2 ? isbn : null;
 };
 
-const getAmazonUrl = async (isbn: string[] | null) => {
+/** Recebe ISBN 13 de um livro e retorna o link da amazon do produto  */
+const getAmazonUrl = async (isbn: string | null) => {
   if (!isbn) return null;
-  const amazonURL = `https://amazon.com.br/dp/${isbn[1]}`;
+  const amazonURL = `https://amazon.com.br/dp/${isbn}`;
   return amazonURL;
 };
 

@@ -1,20 +1,12 @@
 type User = {
   id: string;
-  nome: string;
-  apelido: string;
-  foto: string;
+  name: string;
+  nickname: string;
+  profilePicture: string;
   skoob?: string;
-  pages: number;
-  following: {
-    success: 1 | 0;
-    status: 1 | 0;
-    description: string;
-  };
-  friends: {
-    success: 1 | 0;
-    status: 1 | 0;
-    description: string;
-  };
+  totalPages: number;
+  following: boolean;
+  friends: boolean;
 };
 
 export type { User };

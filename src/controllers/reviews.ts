@@ -3,7 +3,7 @@ import * as cheerio from "cheerio";
 
 import type { Review } from "../@types";
 
-// Retorna todas as páginas html de reviews de um usuário específico.
+/** Retorna todas as páginas html de reviews de um usuário específico. */
 async function fetchPages(userId: string): Promise<any[]> {
   const page = await axios.get(`https://www.skoob.com.br/estante/resenhas/${userId}`, { responseEncoding: "binary" });
   const $ = cheerio.load(page.data.toString("ISO-8859-1"));
@@ -18,7 +18,7 @@ async function fetchPages(userId: string): Promise<any[]> {
   );
 }
 
-// Retorna todas as reviews de um usuário específico.
+/**  Retorna todas as reviews de um usuário específico. */
 async function getReviews(userId: string): Promise<Review[] | null> {
   const reviews: Review[] = [];
   const pages = await fetchPages(userId);

@@ -1,6 +1,6 @@
 import type Book from "./Book";
 
-type SkoobBook = {
+interface SkoobBook {
   id: number;
   livro_id: number;
   titulo: string;
@@ -16,6 +16,7 @@ type SkoobBook = {
   sinopse: string;
   edicoes: number;
   leitores: number;
+  autor: string;
   capitulo_url: string;
   capa_grande: string;
   capa_media: string;
@@ -30,7 +31,7 @@ type SkoobBook = {
     minutos: number;
     segundos: number;
   };
-};
+}
 
 type SkoobUser = {
   id: number;
@@ -72,4 +73,26 @@ type SearchResult = {
   results: Book[];
 };
 
-export type { SkoobResponse, SearchResult, SkoobUser, SkoobBook };
+interface SkoobBookshelfBook {
+  id: number;
+  livro_id: number;
+  ranking: number;
+  tipo: string;
+  favorito: 1 | 0;
+  desejado: 1 | 0;
+  troco: 1 | 0;
+  tenho: 1 | 0;
+  emprestei: 1 | 0;
+  paginas: number | "";
+  dt_resenha: string | "";
+  dt_leitura: string | "";
+  meta: number;
+  spoiler: 1 | 0;
+  media: number;
+  update?: 1;
+  edicao: SkoobBook;
+}
+
+type SkoobBookshelf = Array<SkoobBookshelfBook>;
+
+export type { SkoobResponse, SearchResult, SkoobUser, SkoobBook, SkoobBookshelf };
