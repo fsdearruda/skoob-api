@@ -1,6 +1,6 @@
 import { Bookshelf, SkoobBookshelf, SkoobBook, Book } from "../@types";
 
-// Converte um SkoobBook para Book
+/**  Recebe um um objeto do tipo SkoobBook e retorna um do tipo Book */
 function convertBook(book: SkoobBook): Book {
   const { id, livro_id, titulo, subtitulo, ano, paginas, autor, sinopse, editora, capa_grande, url } = book;
   return {
@@ -17,7 +17,8 @@ function convertBook(book: SkoobBook): Book {
     skoob_url: url,
   };
 }
-// Converte uma estante de livros do Skoob para um objeto do tipo Bookshelf
+
+/**  Recebe um objeto do tipo SkoobBookshelf e retorna um do tipo Bookshelf */
 export const convertBookshelf = (bookshelf: SkoobBookshelf): Bookshelf => {
   return bookshelf.map(book => {
     const { tipo, ranking, desejado, favorito, paginas, dt_leitura, dt_resenha, edicao } = book;

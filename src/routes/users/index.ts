@@ -26,7 +26,6 @@ router.get("/:id", async (req, res: Response<ErrorMessage | User>) => {
 router.get("/:id/bookshelf", async (req, res: Response<ErrorMessage | Bookshelf>) => {
   const { id } = req.params as { id: string };
   if (!id) return res.status(400).json({ error: "Id de usuário não informado" });
-
   const bookshelf = await getBookshelf(id);
   if (!bookshelf) return res.status(404).json({ error: "Usuário não encontrado" });
   return res.status(200).json(bookshelf);

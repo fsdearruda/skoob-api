@@ -4,7 +4,7 @@ type Review = {
   author: string;
   title: string | null;
   date: string;
-  review: string;
+  body: string;
   rating: number;
   profilePicture: string | null;
 };

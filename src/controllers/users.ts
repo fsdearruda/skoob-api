@@ -34,12 +34,12 @@ async function getUser(userId: string): Promise<User | null> {
   return user;
 }
 
-async function getUserById(id: string): Promise<User | null> {
+async function getUserById(userId: string): Promise<User | null> {
   const db = await connect();
-  const user = await db.collection<User>("users").findOne({ id });
+  const user = await db.collection<User>("users").findOne({ id: userId });
   const { _id, ...userWithoutId } = user as WithId<User>;
   if (user) return userWithoutId;
-  const newUser = await getUser(id);
+  const newUser = await getUser(userId);
   if (!newUser) return null;
   await db.collection<User>("users").insertOne(newUser);
   return newUser;

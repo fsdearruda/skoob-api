@@ -8,11 +8,11 @@ import { WithId } from "mongodb";
 
 const router = Router();
 
-type Error = {
+type ErrorMessage = {
   error: string;
 };
 
-router.get("/:id", async (req, res: Response<Error | Book>) => {
+router.get("/:id", async (req, res: Response<ErrorMessage | Book>) => {
   const { id } = req.params;
 
   if (!id) return res.status(400).send({ error: "Id do livro não informado" });
@@ -38,7 +38,7 @@ type Query = {
   tag: string;
 };
 
-router.get("/:id/price", async (req, res: Response<Error | PriceResponse>) => {
+router.get("/:id/price", async (req, res: Response<ErrorMessage | PriceResponse>) => {
   const { id } = req.params;
   const { tag } = req.query as Query;
   if (!id) return res.status(400).send({ error: "Id do livro não informado" });

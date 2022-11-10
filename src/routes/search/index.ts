@@ -7,7 +7,7 @@ type Query = {
   tag: string | undefined;
 };
 
-router.get("/book/:title", async (req, res) => {
+router.get("/books/:title", async (req, res) => {
   const { title } = req.params;
   const { limit } = req.query as Query;
   if (!title)

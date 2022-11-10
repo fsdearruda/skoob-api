@@ -1,13 +1,13 @@
 import { Router } from "express";
-import userRoutes from "./user";
-import bookRoutes from "./book";
+import userRoutes from "./users";
+import bookRoutes from "./books";
 import searchRoutes from "./search";
 import reviewRoutes from "./reviews";
 
 const router = Router();
 
-router.use("/user", userRoutes);
-router.use("/book", bookRoutes);
+router.use("/users", userRoutes);
+router.use("/books", bookRoutes);
 router.use("/search", searchRoutes);
 router.use("/reviews", reviewRoutes);
 
