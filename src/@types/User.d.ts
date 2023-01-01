@@ -8,5 +8,3 @@ type User = {
   following: boolean;
   friends: boolean;
 };
-
-export type { User };

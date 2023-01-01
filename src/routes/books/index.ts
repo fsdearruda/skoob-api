@@ -1,10 +1,7 @@
-import { Router, Response } from "express";
-
-import { getBookById } from "../../controllers";
-import { Book } from "../../@types";
-
-import { getAmazonUrl, getBookPrice } from "../../utils/amazon";
 import { WithId } from "mongodb";
+import { Router, Response } from "express";
+import { getBookById } from "../../controllers";
+import { getAmazonUrl, getBookPrice } from "../../utils/amazon";
 
 const router = Router();
 

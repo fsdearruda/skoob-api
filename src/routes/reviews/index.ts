@@ -1,5 +1,4 @@
 import { Response, Router } from "express";
-import { Review } from "../../@types";
 import { getBookReviews, getUserReviews } from "../../controllers";
 const router = Router();
 

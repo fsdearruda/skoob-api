@@ -1,6 +1,5 @@
 import { Router, Response } from "express";
 import { getUserById, getBookshelf } from "../../controllers";
-import { User, Bookshelf } from "../../@types";
 
 const router = Router();
 

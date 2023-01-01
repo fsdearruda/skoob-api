@@ -16,4 +16,16 @@ type Book = {
   // price?: number | null;
 };
 
-export default Book;
+// Bookshelf
+
+interface BookshelfBook {
+  rating: number;
+  type: number;
+  favorite: boolean;
+  wished: boolean;
+  review_date: Date | null;
+  read_date: Date | null;
+  edition: Book;
+}
+
+type Bookshelf = BookshelfBook[];

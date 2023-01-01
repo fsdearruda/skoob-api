@@ -9,4 +9,3 @@ type Review = {
   profilePicture: string | null;
 };
 
-export default Review;

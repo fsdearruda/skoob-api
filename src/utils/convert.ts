@@ -1,5 +1,3 @@
-import { Bookshelf, SkoobBookshelf, SkoobBook, Book } from "../@types";
-
 /**  Recebe um um objeto do tipo SkoobBook e retorna um do tipo Book */
 function convertBook(book: SkoobBook): Book {
   const { id, livro_id, titulo, subtitulo, ano, paginas, autor, sinopse, editora, capa_grande, url } = book;

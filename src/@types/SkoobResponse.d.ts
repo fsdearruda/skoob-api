@@ -1,5 +1,3 @@
-import type Book from "./Book";
-
 interface SkoobBook {
   id: number;
   livro_id: number;
@@ -94,5 +92,3 @@ interface SkoobBookshelfBook {
 }
 
 type SkoobBookshelf = Array<SkoobBookshelfBook>;
-
-export type { SkoobResponse, SearchResult, SkoobUser, SkoobBook, SkoobBookshelf };
