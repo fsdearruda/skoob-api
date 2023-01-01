@@ -1,8 +1,8 @@
 import { Router } from "express";
-import userRoutes from "./users";
-import bookRoutes from "./books";
-import searchRoutes from "./search";
-import reviewRoutes from "./reviews";
+import userRoutes from "./routes/users";
+import bookRoutes from "./routes/books";
+import searchRoutes from "./routes/search";
+import reviewRoutes from "./routes/reviews";
 
 const router = Router();
 

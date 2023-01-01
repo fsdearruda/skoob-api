@@ -2,7 +2,6 @@ import fetch from "../lib/fetch";
 import { WithId } from "mongodb";
 import connect from "../utils/connect";
 
-import { Book, SearchResult, SkoobResponse, SkoobBook } from "../@types";
 import { getBookISBN } from "../utils/amazon";
 
 /** Retorna lista de livros que contém o termo passado como parâmetro  */

@@ -1,7 +1,6 @@
 import fetch from "../lib/fetch";
 import connect from "../utils/connect";
 
-import type { User, SkoobUser, SkoobResponse, SkoobBook } from "../@types";
 import { WithId } from "mongodb";
 
 // TODO: Aproveitar o request para a estante do usuário para salvá-la no banco de dados

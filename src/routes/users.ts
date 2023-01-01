@@ -1,11 +1,7 @@
 import { Router, Response } from "express";
-import { getUserById, getBookshelf } from "../../controllers";
+import { getUserById, getBookshelf } from "../controllers";
 
 const router = Router();
-
-type ErrorMessage = {
-  error: string;
-};
 
 router.get("/:id", async (req, res: Response<ErrorMessage | User>) => {
   const { id } = req.params as { id: string };

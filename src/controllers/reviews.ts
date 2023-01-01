@@ -2,7 +2,6 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import { WithId } from "mongodb";
 
-import type { Review } from "../@types";
 import connect from "../utils/connect";
 
 /** Retorna todas as páginas html de reviews de um usuário específico. */

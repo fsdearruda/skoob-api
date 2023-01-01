@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getBooksByTitle } from "../../controllers";
+import { getBooksByTitle } from "../controllers";
 const router = Router();
 
 type Query = {

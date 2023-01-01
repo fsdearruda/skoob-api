@@ -1,13 +1,9 @@
 import { WithId } from "mongodb";
 import { Router, Response } from "express";
-import { getBookById } from "../../controllers";
-import { getAmazonUrl, getBookPrice } from "../../utils/amazon";
+import { getBookById } from "../controllers";
+import { getAmazonUrl, getBookPrice } from "../utils/amazon";
 
 const router = Router();
-
-type ErrorMessage = {
-  error: string;
-};
 
 router.get("/:id", async (req, res: Response<ErrorMessage | Book>) => {
   const { id } = req.params;

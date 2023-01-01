@@ -1,10 +1,6 @@
 import { Response, Router } from "express";
-import { getBookReviews, getUserReviews } from "../../controllers";
+import { getBookReviews, getUserReviews } from "../controllers";
 const router = Router();
-
-type ErrorMessage = {
-  error: string;
-};
 
 router.get("/users/:id", async (req, res: Response<Review[] | ErrorMessage>) => {
   const { id } = req.params as { id: string };
