@@ -91,4 +91,4 @@ interface SkoobBookshelfBook {
   edicao: SkoobBook;
 }
 
-type SkoobBookshelf = Array<SkoobBookshelfBook>;
+type SkoobBookshelf = SkoobBookshelfBook[];

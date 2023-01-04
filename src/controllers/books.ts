@@ -5,7 +5,7 @@ import connect from "../utils/connect";
 import { getBookISBN } from "../utils/amazon";
 
 /** Retorna lista de livros que contém o termo passado como parâmetro  */
-async function getBooksByTitle(title: string, limit: number | undefined): Promise<Array<Book>> {
+async function getBooksByTitle(title: string, limit: number | undefined): Promise<Book[]> {
   const { results } = await fetch<SearchResult>(`/search/v1?q=${title}&limit=${limit || 3}`);
   return results;
 }
