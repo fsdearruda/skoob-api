@@ -8,10 +8,10 @@ const router = Router();
 router.get("/:id", async (req, res: Response<ErrorMessage | Book>) => {
   const { id } = req.params as { id: string };
 
-  if (!id) return res.status(400).send({ error: "Id do livro não informado" });
+  if (!id) return res.status(400).send({ error: "Id não informado." });
   try {
-    const book = await getBookById(id)
-    if (!book) return res.status(404).send({ error: "Id inválido" });
+    const book = await getBookById(id);
+    if (!book) return res.status(404).send({ error: "Id inválido." });
     return res.status(200).send(book);
   } catch (err) {
     console.log(err);
@@ -26,19 +26,15 @@ type PriceResponse = {
   amazon_url: string | null;
 };
 
-type Query = {
-  tag: string;
-};
-
 router.get("/:id/price", async (req, res: Response<ErrorMessage | PriceResponse>) => {
   const { id } = req.params;
-  const { tag } = req.query as Query;
-  if (!id) return res.status(400).send({ error: "Id do livro não informado" });
+  const { tag } = req.query as { tag: string };
+  if (!id) return res.status(400).send({ error: "Id não informado." });
   try {
     const book: Book = await getBookById(id);
-    if (!book) return res.status(404).send({ error: "Id inválido" });
+    if (!book) return res.status(404).send({ error: "Id inválido." });
     const { isbn_13 } = book;
-    if (!isbn_13) return res.status(404).send({ error: "ISBN não encontrado" });
+    if (!isbn_13) return res.status(404).send({ error: "Não foi possível encontrar o preço do livro." });
     let amazonURL = await getAmazonUrl(isbn_13);
     const price = await getBookPrice(amazonURL);
     if (amazonURL && tag) amazonURL += `?tag=${tag}`;

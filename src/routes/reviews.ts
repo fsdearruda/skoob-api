@@ -4,10 +4,10 @@ const router = Router();
 
 router.get("/users/:id", async (req, res: Response<Review[] | ErrorMessage>) => {
   const { id } = req.params as { id: string };
-  if (!id) return res.status(400).send({ error: "Id do usuário não informado" });
+  if (!id) return res.status(400).send({ error: "Id não informado." });
   try {
     const reviews = await getUserReviews(id);
-    if (!reviews) return res.status(200).json({ error: "Usuário não possui reviews" });
+    if (!reviews) return res.status(200).json({ error: "Usuário não possui reviews." });
     return res.status(200).json(reviews);
   } catch (err) {
     console.log(err);
@@ -17,10 +17,10 @@ router.get("/users/:id", async (req, res: Response<Review[] | ErrorMessage>) => 
 
 router.get("/books/:id", async (req, res: Response<Review[] | ErrorMessage>) => {
   const { id } = req.params as { id: string };
-  if (!id) return res.status(400).json({ error: "Id do livro não informado" });
+  if (!id) return res.status(400).json({ error: "Id não informado." });
   try {
     const reviews = await getBookReviews(id);
-    if (!reviews) return res.status(200).json({ error: "Livro não possui reviews" });
+    if (!reviews) return res.status(200).json({ error: "Livro não possui reviews." });
     return res.status(200).json(reviews);
   } catch (err) {
     console.log(err);
