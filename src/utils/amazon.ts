@@ -36,8 +36,7 @@ const getBookISBN = async (skoobURL: string): Promise<string[] | null> => {
 };
 
 /** Recebe ISBN 13 de um livro e retorna o link da amazon do produto  */
-const getAmazonUrl = async (isbn: string | null) => {
-  if (!isbn) return null;
+const getAmazonUrl = async (isbn: string) => {
   const amazonURL = `https://amazon.com.br/dp/${isbn}`;
   return amazonURL;
 };
