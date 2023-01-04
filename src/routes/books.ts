@@ -6,14 +6,13 @@ import { getAmazonUrl, getBookPrice } from "../utils/amazon";
 const router = Router();
 
 router.get("/:id", async (req, res: Response<ErrorMessage | Book>) => {
-  const { id } = req.params;
+  const { id } = req.params as { id: string };
 
   if (!id) return res.status(400).send({ error: "Id do livro não informado" });
   try {
-    const book = (await getBookById(id)) as WithId<Book>;
-    const { _id, ...bookWithoutId } = book;
-    if (!bookWithoutId) return res.status(404).send({ error: "Id inválido" });
-    return res.status(200).send(bookWithoutId);
+    const book = await getBookById(id)
+    if (!book) return res.status(404).send({ error: "Id inválido" });
+    return res.status(200).send(book);
   } catch (err) {
     console.log(err);
     return res.status(500).send({

@@ -11,15 +11,17 @@ async function getBooksByTitle(title: string, limit: number | undefined): Promis
 }
 
 /** Retorna detalhes do livro com id passado como parâmetro */
-async function getBookById(bookId: string): Promise<Book | WithId<Book>> {
+async function getBookById(bookId: string): Promise<Book> {
   const db = await connect();
-  const book = await db.collection<Book>("books").findOne({ id: parseInt(bookId) });
-  if (book) return book;
+  let book = await db.collection<Book>("books").findOne({ id: parseInt(bookId) });
+  const { _id, ...bookWithoutId } = book!;
+  if (book) return bookWithoutId;
   console.log("Book not found in database. Fetching from Skoob...");
+
   const { response } = await fetch<SkoobResponse<SkoobBook>>(`/v1/book/${bookId}`);
-  const newBook = await formatBook(response);
-  await db.collection<Book>("books").insertOne(newBook);
-  return newBook;
+  const fetchedBook = await formatBook(response);
+  await db.collection<Book>("books").insertOne(fetchedBook);
+  return fetchedBook;
 }
 
 /** Transforma o livro retornado pelo Skoob em um livro com melhor formatação */
