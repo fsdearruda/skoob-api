@@ -50,9 +50,13 @@ yarn dev
 ## Todo list
 
 - [ ] Deploy na Vercel
+- [ ] Rota de preços
+  - [x] Retorna preço e link da Amazon de um livro
+  - [ ] Retorna opções de preço do livro físico e digital (se disponíveis)
+  - [ ] Faz cache dos preços no banco de dados
 - [ ] Rota de resenhas
-  - [x] Listar todas as resenhas de um usuário
-  - [ ] Listar todas as resenhas de um livro
+  - [x] Lista todas as resenhas de um usuário
+  - [ ] Lista todas as resenhas de um livro
 
 ## Bugs conhecidos
 
