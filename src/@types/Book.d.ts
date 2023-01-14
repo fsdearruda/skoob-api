@@ -12,8 +12,12 @@ type Book = {
   skoob_url: string;
   isbn_10?: string | null;
   isbn_13?: string | null;
-  // amazon_url?: string | null;
-  // price?: number | null;
+  amazon_info?: {
+    amazon_url: string | null;
+    price: number | null;
+    ttl: number;
+    in_stock: boolean;
+  };
 };
 
 // Bookshelf
