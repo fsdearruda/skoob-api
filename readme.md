@@ -29,7 +29,7 @@ git clone https://github.com/Rapoxo/skoob-api.git
 cd skoob-api
 
 # Instalar dependências
-yarn install
+yarn
 
 # Iniciar servidor
 yarn dev
