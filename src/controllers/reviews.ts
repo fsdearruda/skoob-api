@@ -56,9 +56,8 @@ async function getUserReviews(userId: string): Promise<Review[] | null> {
     });
   });
   if (reviews.length === 0) return null;
-  // por algum motivo as reviews estão sendo retornadas com _id, o que não deveria acontecer
   const db = await connect();
-  await db.collection<Review>("reviews").insertMany(reviews);
+  await db.collection<Review>("reviews").insertMany({ ...reviews });
   return reviews;
 }
 /** Retorna todas as reviews (salvas no banco de dados) de um livro  */
