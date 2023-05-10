@@ -1,0 +1,404 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Skoob API",
+    "description": "Descrição da API.",
+    "contact": {
+      "name": "Fernando Arruda",
+      "email": "fernando.arruda.131@ufrn.edu.br"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api"
+    }
+  ],
+  "paths": {
+    "/books/random": {
+      "get": {
+        "description": "Retorna uma lista de livros aleatórios.",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "O número máximo de livros para retornar.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Book"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books/{id}": {
+      "get": {
+        "description": "Retorna um livro pelo seu ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "O ID do livro.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Requisição inválida.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Não encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "description": "Retorna um usuário pelo ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetros inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erro interno do servidor.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}/bookshelf": {
+      "get": {
+        "description": "Retorna a estante de livros de um usuário pelo ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Estante de livros encontrada.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bookshelf"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetros inválidos.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuário não encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search/books/{title}": {
+      "get": {
+        "description": "Retorna uma lista de livros que contém o título informado.",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "path",
+            "description": "Título do livro.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Book"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Requisição inválida.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "nickname": {
+            "type": "string"
+          },
+          "profilePicture": {
+            "type": "string"
+          },
+          "skoob": {
+            "type": "string"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "following": {
+            "type": "boolean"
+          },
+          "friends": {
+            "type": "boolean"
+          }
+        },
+        "required": ["id", "name", "nickname", "profilePicture", "totalPages", "following", "friends"]
+      },
+      "Book": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "book_id": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer"
+          },
+          "pages": {
+            "type": "integer"
+          },
+          "author": {
+            "type": "string"
+          },
+          "synopsis": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "cover": {
+            "type": "string"
+          },
+          "skoob_url": {
+            "type": "string"
+          },
+          "isbn_10": {
+            "type": "string"
+          },
+          "isbn_13": {
+            "type": "string"
+          },
+          "amazon_info": {
+            "type": "object",
+            "properties": {
+              "amazon_url": {
+                "type": "string"
+              },
+              "price": {
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "ttl": {
+                "type": "integer"
+              },
+              "in_stock": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      "BookshelfBook": {
+        "type": "object",
+        "properties": {
+          "rating": {
+            "type": "number"
+          },
+          "type": {
+            "type": "number"
+          },
+          "favorite": {
+            "type": "boolean"
+          },
+          "wished": {
+            "type": "boolean"
+          },
+          "review_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "read_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "edition": {
+            "$ref": "#/components/schemas/Book"
+          }
+        }
+      },
+      "Bookshelf": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/BookshelfBook"
+        }
+      },
+      "ErrorMessage": {
+        "type": "string"
+      }
+    }
+  }
+}

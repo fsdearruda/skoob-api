@@ -21,7 +21,7 @@ async function getBookById(bookId: string): Promise<Book> {
     console.log("Book not found in database. Fetching from Skoob...");
     const { response } = await fetch<SkoobResponse<SkoobBook>>(`/v1/book/${bookId}`);
     const fetchedBook = await formatBook(response);
-    await db.collection<Book>("books").insertOne({ ...fetchedBook })
+    await db.collection<Book>("books").insertOne({ ...fetchedBook });
     return fetchedBook;
   } catch (err) {
     throw err;
@@ -71,8 +71,11 @@ async function updateBook(book_id: string, newBook: Book) {
       id: Number(book_id),
     });
     if (!book) return;
-    console.log("Updating book in database...")
-    await db.collection<Book>("books").updateOne({ id: Number(book_id) }, { $set: newBook }).then(() => console.log("Book updated!"));
+    console.log("Updating book in database...");
+    await db
+      .collection<Book>("books")
+      .updateOne({ id: Number(book_id) }, { $set: newBook })
+      .then(() => console.log("Book updated!"));
   } catch (err) {
     console.log(err);
   }

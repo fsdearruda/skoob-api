@@ -1,4 +1,3 @@
-import { WithId } from "mongodb";
 import { Router, Response } from "express";
 import { getBookById } from "../controllers";
 import { getAmazonUrl, getBookPrice } from "../utils/amazon";

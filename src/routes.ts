@@ -6,9 +6,11 @@ import reviewRoutes from "./routes/reviews";
 
 const router = Router();
 
+
 router.use("/users", userRoutes);
 router.use("/books", bookRoutes);
 router.use("/search", searchRoutes);
 router.use("/reviews", reviewRoutes);
+
 
 export default router;
