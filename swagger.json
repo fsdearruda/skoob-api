@@ -15,46 +15,6 @@
     }
   ],
   "paths": {
-    "/books/random": {
-      "get": {
-        "description": "Retorna uma lista de livros aleatórios.",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "O número máximo de livros para retornar.",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Book"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Erro interno do servidor.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorMessage"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/books/{id}": {
       "get": {
         "description": "Retorna um livro pelo seu ID.",
