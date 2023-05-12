@@ -4,6 +4,7 @@
   "main": "index.ts",
   "license": "MIT",
   "scripts": {
+    "start": "ts-node index.ts",
     "dev": "ts-node-dev --respawn --files index.ts"
   },
   "devDependencies": {
