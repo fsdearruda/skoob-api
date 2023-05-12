@@ -11,7 +11,13 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api"
+      "url": "http://localhost:3000/api",
+      "description": "Servidor de desenvolvimento."
+    },
+    {
+      "url": "https://skoob-api.onrender.com/api",
+      "description": "Servidor de produção."
+
     }
   ],
   "paths": {
